@@ -6,34 +6,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-function createCodeMC() 
+function createCodeMC()
   {
-  var theQuestion = document.getElementById("MCquestion").value;
+    // throw alert if answer box is empty
+    if (document.getElementById("choice1").value == "") {
+      window.alert("Please enter at least one answer choice.")
+    } else {
+
+var theQuestion = document.getElementById("MCquestion").value;
   document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;p&gt;' + theQuestion + '&lt;/p&gt;</pre>');
-    
   var theChoices = document.getElementsByName("choice");
   var theChecks = document.getElementsByName("checkbox");
-    
+
   for (var i = 0; i < theChoices.length; i++) {
     var answerChoice = theChoices[i].value;
     if (answerChoice !== null && answerChoice !== '')
-      { 
-        if (theChecks[i].checked == true) 
+      {
+        if (theChecks[i].checked == true)
         {
         document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;input type="button" class="btn btn-light btn-block" value="' + answerChoice + '" onclick="this.style.backgroundColor=\'green\'; this.style.color=\'white\';"&gt;</pre>');
-        } 
-        else 
+        }
+        else
         {
         document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;input type="button" class="btn btn-light btn-block" value="' + answerChoice + '" onclick="this.style.backgroundColor=\'red\'; this.style.color=\'white\'; this.value=\'Incorrect: ' + answerChoice + '\';"&gt;</pre>');
         }
     }
-    else 
+    else
       {
         break;
       }
     }
     document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;p&gt;&lt;/p&gt;</pre>');
-}
+} // end of check for empty box
+} // end of createCode function
    
   
 function copyCodeMC(id)
