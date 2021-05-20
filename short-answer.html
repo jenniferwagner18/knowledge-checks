@@ -10,18 +10,24 @@
 
 function createCode()
 {
+  // throw alert if answer box is empty
+  if (document.getElementById("correct").value == "") {
+    window.alert("Please enter at least one correct answer.")
+  } else {
+
 qno = document.getElementById("number").value;
 theQuestion = document.getElementById("question").value;
 correctAnswer = document.getElementById("correct").value.toLowerCase();
 additionalAnswer = document.getElementById("additional").value.toLowerCase();
 document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;p&gt;' + theQuestion + '&lt;/p&gt; &lt;input id="answer' + qno + '" type="text" size="30" onclick="this.value = \'\'"&gt;&lt;button class="btn btn-light" onclick="check' + qno + '()"&gt;Submit&lt;/button&gt; &lt;p id="result' + qno + '"&gt; &lt;/p&gt;&lt;script&gt;function check' + qno + '() {var guess' + qno + ', feedback' + qno + '; guess' + qno + ' = document.getElementById("answer' + qno + '").value.toLowerCase();if (guess' + qno + ' == "' + correctAnswer + '"</pre>');
-  
+
  if (additionalAnswer !== "")
    {document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>|| guess' + qno + ' == "' + additionalAnswer + '"</pre>');
     }
-                                                      
+
 document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>) {feedback' + qno + ' = \"&lt;b style=\'color:green\'&gt;Correct!&lt;/b&gt;";}else {feedback' + qno + ' = "&lt;b style=\'color:red\'&gt;Incorrect! Try again!&lt;/b&gt;";}document.getElementById("result' + qno + '").innerHTML = feedback' + qno +  ';}&lt;/script&gt; &lt;p&gt;&lt;/p&gt;</pre>');
-}
+} // end of check for empty box
+} // end of createCode function
 
 function copyCode(id)
 {
@@ -62,7 +68,7 @@ document.getElementById("result").innerHTML = feedback;}
 </script>  <hr>
 <h2>Create Short Answer or Fill in the Blank Question</h2>
 <p>Enter the question number and the correct answer below as well as an additional correct answer, if needed. For example, this can account for spelling variations (color and colour) or numbers as words and digits (ten and 10). Your text will be changed to lowercase so the answers will be case insensitive. You only need to enter the question number if you are inserting more than one question per page.</p>
-<p>Enter the question number: <input id="number" type="text" size="5" /> (You can leave this blank if you only need one question per page)   </p>
+<p>Enter the question number: <input id="number" type="text" size="5" /> (Leave blank if you only need one question per page)   </p>
  <p> Enter the question: <input id="question" type="text" size="50" /></p>
 <p>Enter the correct answer: <input id="correct" type="text" size="40" /></p>
 <p>Enter an additional correct answer: <input id="additional" type="text" size="40" /> (not required)</p>
