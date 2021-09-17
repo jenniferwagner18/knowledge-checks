@@ -28,7 +28,7 @@ var theQuestion = document.getElementById("MCquestion").value;
         }
         else
         {
-        document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;input type="button" class="btn btn-light btn-block" value="' + answerChoice + '" onclick="this.style.backgroundColor=\'red\'; this.style.color=\'white\'; this.value=\'Incorrect: ' + answerChoice + '\';"&gt;</pre>');
+        document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;input type="button" class="btn btn-light btn-block" value="' + answerChoice + '" onclick="this.style.backgroundColor=\'#dc143c\'; this.style.color=\'white\'; this.value=\'Incorrect: ' + answerChoice + '\';"&gt;</pre>');
         }
     }
     else
@@ -70,10 +70,10 @@ function clearCodeMC(id)
   <br><br>
 <h2>Sample Multiple Choice Question</h2>
 <p>What is the capital of Michigan?</p>
-<input type="button" class="btn btn-light btn-block" value="Flint" onclick="this.value='Incorrect: Flint'; this.style.backgroundColor = 'red'; this.style.color = 'white'" /> 
-<input type="button" class="btn btn-light btn-block" value="Detroit" onclick="this.value='Incorrect: Detroit'; this.style.backgroundColor = 'red'; this.style.color = 'white'" /> 
+<input type="button" class="btn btn-light btn-block" value="Flint" onclick="this.value='Incorrect: Flint'; this.style.backgroundColor = '#dc143c'; this.style.color = 'white'" /> 
+<input type="button" class="btn btn-light btn-block" value="Detroit" onclick="this.value='Incorrect: Detroit'; this.style.backgroundColor = '#dc143c'; this.style.color = 'white'" /> 
 <input type="button" class="btn btn-light btn-block" value="Lansing" onclick="this.style.backgroundColor = 'green'; this.style.color = 'white';" />
-<input type="button" class="btn btn-light btn-block" value="Ann Arbor" onclick="this.value='Incorrect: Ann Arbor'; this.style.backgroundColor = 'red'; this.style.color = 'white'" />  
+<input type="button" class="btn btn-light btn-block" value="Ann Arbor" onclick="this.value='Incorrect: Ann Arbor'; this.style.backgroundColor = '#dc143c'; this.style.color = 'white'" />  
   <hr> 
     
   <h2>Enter Answer Choices for Multiple Choice (or True/False) Question</h2>
