@@ -24,7 +24,7 @@ var theQuestion = document.getElementById("MCquestion").value;
       {
         if (theChecks[i].checked == true)
         {
-        document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;input type="button" class="btn btn-light btn-block" value="' + answerChoice + '" onclick="this.style.backgroundColor=\'green\'; this.style.color=\'white\';"&gt;</pre>');
+        document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;input type="button" class="btn btn-light btn-block" value="' + answerChoice + '" onclick="this.style.backgroundColor=\'green\'; this.style.color=\'white\'; this.value=\'Correct: ' + answerChoice + '\';"&gt;</pre>');
         }
         else
         {
