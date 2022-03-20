@@ -6,91 +6,91 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-function createCodeMC()
-  {
-    // throw alert if answer box is empty
-    if (document.getElementById("choice1").value == "") {
-      window.alert("Please enter at least one answer choice.")
-    } else {
+function createCodeMC() {
+  // throw alert if answer box is empty
+  if (document.getElementById("choice1").value == "") {
+    window.alert("Please enter at least one answer choice for your multiple choice question.")
+  } else {
 
-var theQuestion = document.getElementById("MCquestion").value;
-  document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;p&gt;' + theQuestion + '&lt;/p&gt;</pre>');
-  var theChoices = document.getElementsByName("choice");
-  var theChecks = document.getElementsByName("checkbox");
+    var theQuestion = document.getElementById("MCquestion").value;
+    document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;fieldset&gt;&lt;legend&gt;' + theQuestion + '&lt;/legend&gt;</pre>');
+    var theChoices = document.getElementsByName("choice");
+    var theChecks = document.getElementsByName("checkbox");
 
-  for (var i = 0; i < theChoices.length; i++) {
-    var answerChoice = theChoices[i].value;
-    if (answerChoice !== null && answerChoice !== '')
-      {
-        if (theChecks[i].checked == true)
-        {
-        document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;input type="button" class="btn btn-light btn-block" value="' + answerChoice + '" onclick="this.style.backgroundColor=\'green\'; this.style.color=\'white\'; this.value=\'Correct: ' + answerChoice + '\';"&gt;</pre>');
+    for (var i = 0; i < theChoices.length; i++) {
+      var answerChoice = theChoices[i].value;
+      if (answerChoice !== null && answerChoice !== '') {
+        if (theChecks[i].checked == true) {
+          document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;input type="button" class="btn btn-light btn-block" value="' + answerChoice + '" onclick="this.style.backgroundColor=\'green\'; this.style.color=\'white\';  this.value=\'Correct: ' + answerChoice + '\';"&gt;</pre>');
         }
-        else
-        {
-        document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;input type="button" class="btn btn-light btn-block" value="' + answerChoice + '" onclick="this.style.backgroundColor=\'#dc143c\'; this.style.color=\'white\'; this.value=\'Incorrect: ' + answerChoice + '\';"&gt;</pre>');
+        else {
+          document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;input type="button" class="btn btn-light btn-block" value="' + answerChoice + '" onclick="this.style.backgroundColor=\'#dc143c\'; this.style.color=\'white\'; this.value=\'Incorrect: ' + answerChoice + '\';"&gt;</pre>');
         }
-    }
-    else
-      {
+      }
+      else {
         break;
       }
     }
-    document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;p&gt;&lt;/p&gt;</pre>');
-} // end of check for empty box
+    document.getElementById("generateMC").insertAdjacentHTML('beforeend', '<pre>&lt;/fieldset&gt;</pre>');
+  } // end of check for empty box
 } // end of createCode function
-   
-  
-function copyCodeMC(id)
-{
-var r = document.createRange();
-r.selectNode(document.getElementById(id));
-window.getSelection().removeAllRanges();
-window.getSelection().addRange(r);
-document.execCommand('copy');
-window.getSelection().removeAllRanges();
+
+
+
+function copyCodeMC(id) {
+  var r = document.createRange();
+  r.selectNode(document.getElementById(id));
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(r);
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
 }
 
-function clearCodeMC(id)
-{
-   document.getElementById(id).innerHTML = "";
+function clearCodeMC(id) {
+  document.getElementById(id).innerHTML = "";
+  }
+
+
+function clearQuestion() {
   document.getElementById("MCquestion").value = "";
-   for (var i = 0; i < document.getElementsByName("choice").length; i++) {
+  for (var i = 0; i < document.getElementsByName("choice").length; i++) {
     document.getElementsByName("choice")[i].value = "";
     document.getElementsByName("checkbox")[i].checked = false;
-   }
-  
+  }
+
 }
+
 </script>
 </head>
 <body>
   <div class="container-fluid">
 <div class="row">
 <div class="col-sm-10 offset-sm-1">
-  <br><br>
+<h1>Create Code for Multiple Choice or True/False Questions</h1>
 <h2>Sample Multiple Choice Question</h2>
-<p>What is the capital of Michigan?</p>
-<input type="button" class="btn btn-light btn-block" value="Flint" onclick="this.value='Incorrect: Flint'; this.style.backgroundColor = '#dc143c'; this.style.color = 'white'" /> 
+<fieldset>
+<legend>What is the capital of Michigan?</legend>
 <input type="button" class="btn btn-light btn-block" value="Detroit" onclick="this.value='Incorrect: Detroit'; this.style.backgroundColor = '#dc143c'; this.style.color = 'white'" /> 
-<input type="button" class="btn btn-light btn-block" value="Lansing" onclick="this.value='Correct: Lansing'; this.style.backgroundColor = 'green'; this.style.color = 'white';" />
-<input type="button" class="btn btn-light btn-block" value="Ann Arbor" onclick="this.value='Incorrect: Ann Arbor'; this.style.backgroundColor = '#dc143c'; this.style.color = 'white'" />  
-  <hr> 
-    
-  <h2>Enter Answer Choices for Multiple Choice (or True/False) Question</h2>
-  
-<p> Enter the question: <input id="MCquestion" type="text" size="50" /></p>
-<p>Enter your answer choices and check the box next to the correct answer(s). (You do not have to use all four.)</p>
+<input type="button" class="btn btn-light btn-block" value="Lansing" onclick="this.value='Correct: Lansing'; this.style.backgroundColor = 'green'; this.style.color = 'white'" /> 
+<input type="button" class="btn btn-light btn-block" value="Ann Arbor" onclick="this.value='Incorrect: Ann Arbor'; this.style.backgroundColor = '#dc143c'; this.style.color = 'white'" /> 
+<input type="button" class="btn btn-light btn-block" value="Grand Rapids" onclick="this.value='Incorrect: Grand Rapids'; this.style.backgroundColor = '#dc143c'; this.style.color = 'white'" />
+</fieldset>
+<hr>
+<h2>Create Your Own Question:</h2>
+<fieldset>
+<p><label>Enter the multiple choice question: <input id="MCquestion" type="text" size="65" /></label></p>
+<p>Enter your answer choices and check the box(es) next to the correct answer(s). [You do not have to use all five.]</p>
+<label>1. <input id="choice1" name="choice" type="text" size="60" /></label> <label>Check if 1 is correct: <input type="checkbox" name="checkbox" id="check1" /></label> <br /><br />
+<label>2. <input id="choice2" name="choice" type="text" size="60" /></label> <label>Check if 2 is correct: <input type="checkbox" name="checkbox" id="check2" /></label> <br /><br />
+<label>3. <input id="choice3" name="choice" type="text" size="60" /></label> <label>Check if 3 is correct: <input type="checkbox" name="checkbox" id="check3" /></label> <br /><br />
+<label>4. <input id="choice4" name="choice" type="text" size="60" /></label> <label>Check if 4 is correct: <input type="checkbox" name="checkbox" id="check4" /></label> <br /><br />
+<label>5. <input id="choice5" name="choice" type="text" size="60" /></label> <label>Check if 5 is correct: <input type="checkbox" name="checkbox" id="check5" /></label> <br /><br />
+</fieldset>
+<p><button class="btn btn-success" onclick="createCodeMC()">Create Code</button> <button id="clearQ" class="btn btn-danger" onclick="clearQuestion()">Clear Question</button></p>
+<p>Code will generate below:</p>
+<p id="generateMC" style="user-select: all;" class="bg-light"></p>
+<button id="copied" class="btn btn-success" onclick="copyCodeMC('generateMC')">Copy Code</button> <button id="clear" class="btn btn-danger" onclick="clearCodeMC('generateMC')">Clear Code</button><hr />
 
-1. <input id="choice1" name="choice" type="text" size="50"> <input type="checkbox" name="checkbox" id="check1"> <br><br>
-2. <input id="choice2" name="choice" type="text" size="50"> <input type="checkbox" name="checkbox" id="check2"> <br><br>
-3. <input id="choice3" name="choice" type="text" size="50"> <input type="checkbox" name="checkbox" id="check3"> <br><br>
-4. <input id="choice4" name="choice" type="text" size="50"> <input type="checkbox" name="checkbox" id="check4"> <br><br>
- <p><button class="btn btn-light" onclick="createCodeMC()">Create Code</button> </p>
-  <p>Code will generate below: </p>
-  <p id="generateMC" style="user-select: all" class="bg-light"></p>
-<button id="copiedMC" class="btn btn-light" onclick="copyCodeMC('generateMC')">Copy Code</button>
-<button id="clearMC" class="btn btn-light" onclick="clearCodeMC('generateMC')">Clear Code</button>
-  <hr>
   <h2> Copy & Paste Code</h2>
 <p>Click the Copy Code button above to copy the code to the clipboard. On your D2L page, open the HTML editor, click the Insert Stuff icon, choose Enter Embed Code, right-click and choose Paste. (The preview will not be accurate.)</p>
 
@@ -104,10 +104,10 @@ function clearCodeMC(id)
  </div>
 <script>
 $(document).ready(function(){
-    $('#copiedMC').tooltip({title: "Code Copied!", trigger: "click", placement: "bottom"});
+    $('#copied').tooltip({title: "Code Copied!", trigger: "click", placement: "bottom"});
   });
-$('#clearMC').click(function(){
-    $('#copiedMC').tooltip('hide');
+$('#clear').click(function(){
+    $('#copied').tooltip('hide');
   });
 </script>
 </body>
