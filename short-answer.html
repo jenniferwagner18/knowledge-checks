@@ -32,7 +32,7 @@ document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;fi
    {document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>|| guess' + qno + ' == "' + additionalAnswer + '"</pre>');
     }
 
-document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>) {feedback' + qno + ' = \"&lt;strong style=\'color:green\'&gt;Correct!&lt;/strong&gt;";}else {feedback' + qno + ' = "&lt;strong style=\'color:red\'&gt;Incorrect! Try again!&lt;/strong&gt;";}document.getElementById("result' + qno + '").innerHTML = feedback' + qno +  ';}&lt;/script&gt; &lt;/fieldset&gt;</pre>');
+document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>) {feedback' + qno + ' = \"&lt;strong style=\'color:green\'&gt;Correct!&lt;/strong&gt;";}else {feedback' + qno + ' = "&lt;strong style=\'color:#dc143c\'&gt;Incorrect! Try again!&lt;/strong&gt;";}document.getElementById("result' + qno + '").innerHTML = feedback' + qno +  ';}&lt;/script&gt; &lt;/fieldset&gt;</pre>');
 } // end of check for empty box
 } // end of createCode function
 
@@ -72,7 +72,7 @@ function clearQuestion() {
 function check() {var guess, feedback;
 guess = document.getElementById("answer").value.toLowerCase();
 if (guess == "dog") {feedback = "<strong style='color:green'>Correct!</strong>";}
-else {feedback = "<strong style='color:red'>Incorrect! Try again!</strong>";}
+else {feedback = "<strong style='color:#dc143c'>Incorrect! Try again!</strong>";}
 document.getElementById("result").innerHTML = feedback;}
 </script>
 </fieldset>
