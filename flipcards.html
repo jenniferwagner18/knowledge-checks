@@ -5,7 +5,7 @@
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
 <style>
 .flip-card, .flip-card-click {
-display: inline-block;
+  display: inline-block;
   background-color: transparent;
   width: 300px;
   height: 300px;
@@ -36,7 +36,8 @@ display: inline-block;
 }
   
 .flip-card-inner:focus, .flip-card-inner:hover {
-  outline: 3px solid #006fbf;
+  outline: 5px solid #03c23c;
+  cursor: pointer;
 }
 
 .flip-card-front, .flip-card-back {
@@ -68,16 +69,16 @@ display: inline-block;
 </style>
 <title>Flipcards</title>
 </head>
+  
 <body>
 <div class="container-fluid">
 <div class="col-sm-10 offset-sm-1">
-<h1>Hover, Tap, or Tab to Flip the Card (CSS Only)</h1>
+  
+<h1>Flipcards</h1>
+<h2>Hover, Tap, or Tab to Flip the Card (CSS Only)</h2>
 
-<div class="row">
-
-<div class="col">
 <div class="flip-card">
-  <div tabindex="0" class="flip-card-inner">
+  <div class="flip-card-inner">
     <div class="flip-card-front">
       <p>Card 1 Front</p>
     </div>
@@ -86,11 +87,9 @@ display: inline-block;
     </div>
   </div>
 </div>
-</div>
 
-  <div class="col">
 <div class="flip-card">
-  <div tabindex="0" class="flip-card-inner">
+  <div class="flip-card-inner">
     <div class="flip-card-front">
       <p>Card 2 Front</p>
     </div>
@@ -99,11 +98,9 @@ display: inline-block;
     </div>
   </div>
 </div>
-</div>
 
-<div class="col">
 <div class="flip-card">
-  <div tabindex="0" class="flip-card-inner">
+  <div class="flip-card-inner">
     <div class="flip-card-front">
       <p>Card 3 Front</p>
     </div>
@@ -112,16 +109,11 @@ display: inline-block;
     </div>
   </div>
 </div>
-</div>
 
-</div>  <!-- end of row -->
+ <h2>Click, Tap, or Tab+Enter to Flip the Card (Uses JS)</h2>
 
- <h1>Click, Tap, or Tab+Enter to Flip the Card (Uses JS)</h1>
-  <div class="row">
-
-<div class="col">
 <div class="flip-card-click">
-  <div tabindex="0" class="flip-card-inner">
+  <div class="flip-card-inner">
     <div class="flip-card-front">
       <p>Card 1 Front</p>
     </div>
@@ -130,11 +122,9 @@ display: inline-block;
     </div>
   </div>
 </div>
-</div>
 
-  <div class="col">
 <div class="flip-card-click">
-  <div tabindex="0" class="flip-card-inner">
+  <div class="flip-card-inner">
     <div class="flip-card-front">
       <p>Card 2 Front</p>
     </div>
@@ -143,11 +133,9 @@ display: inline-block;
     </div>
   </div>
 </div>
-</div>
 
-<div class="col">
 <div class="flip-card-click">
-  <div tabindex="0" class="flip-card-inner">
+  <div class="flip-card-inner">
     <div class="flip-card-front">
       <p>Card 3 Front</p>
     </div>
@@ -156,25 +144,52 @@ display: inline-block;
     </div>
   </div>
 </div>
+
+</div>
 </div>
 
-</div>  <!-- end of row -->
-</div>
-</div>
-</div>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 <script>
-document.querySelectorAll('.flip-card-click .flip-card-inner').forEach(function (item) {
-  item.addEventListener('keypress', function (evt) {
-    if (evt.keyCode == 13 || evt.keyCode == 32) {
-      item.click();
-    }
-  });
+/* Add attributes dynamically so less HTML code */
+document.querySelectorAll('.flip-card-inner').forEach(function(item) { item.setAttribute('tabindex', '0'); });
+document.querySelectorAll('.flip-card-front').forEach(function(item) { item.setAttribute('role', 'button'); item.setAttribute('aria-expanded', true); });
+document.querySelectorAll('.flip-card-back').forEach(function(item) { item.setAttribute('role', 'button'); item.setAttribute('aria-expanded', false); });
+/* Flip card on click or tap or tab/enter */
+document.querySelectorAll('.flip-card-click .flip-card-inner').forEach(function(item) {
+  item.addEventListener('keypress', function(evt) { if (evt.keyCode == 13 || evt.keyCode == 32) { item.click(); } });
 });
-
-$('.flip-card-click').on('click',
-function () {
-  $(this).toggleClass('flipped');
+/* Toggle flipped class when clicked */
+$('.flip-card-click').click(function() {
+    $(this).toggleClass('flipped');
+  });
+/* Add ids to each flip card */
+$.each($(".flip-card"), (function(index) {
+  $(this).attr("id", "flip-card_" + parseInt(index + 1));
+}));
+$.each($(".flip-card-click"), (function(index) {
+    $(this).attr("id", "flip-card-click_" + parseInt(index + 1));
+}));
+/* Front and back of flip cards - add aria-controls and id */
+$.each($(".flip-card-front"), (function(index) {
+  $(this).attr("id", "flip-card-front_" + parseInt(index + 1));
+  $(this).attr("aria-controls", "flip-card-back_" + parseInt(index + 1));
+}));
+$.each($(".flip-card-back"), (function(index) {
+  $(this).attr("id", "flip-card-back_" + parseInt(index + 1));
+  $(this).attr("aria-controls", "flip-card-front_" + parseInt(index + 1));
+}));
+/* Change aria-expanded when clicked or hovered */
+$('.flip-card-click').click(function() {
+  $(this).find(".flip-card-back").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
+  $(this).find(".flip-card-front").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
+});
+$('.flip-card').mouseenter(function() {
+  $(this).find(".flip-card-back").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
+  $(this).find(".flip-card-front").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
+});
+$('.flip-card').mouseleave(function() {
+  $(this).find(".flip-card-back").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
+  $(this).find(".flip-card-front").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
 });
 </script>
 </body>
