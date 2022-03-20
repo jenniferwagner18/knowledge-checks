@@ -11,7 +11,7 @@ function createCode()
 {
 // throw alert if answers 1 and 2 are empty
 if (document.getElementById("order1").value == "" && document.getElementById("order2").value == "") {
-  window.alert("Please enter answers for at least 1 and 2.")
+  window.alert("Please enter order answers for at least 1 and 2.")
 } else {
 
 //create array for original order input by instructor
@@ -41,21 +41,21 @@ do {
 
 //display directions
 var directions = document.getElementById("directions").value;
-  document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;p&gt;' + directions + '&lt;/p&gt;</pre>');
+  document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;fieldset&gt;&lt;legend&gt;' + directions + '&lt;/legend&gt;</pre>');
 
 // display shuffled array elements next to input boxes
 var qnumber = document.getElementById("qnumber").value;
 for (var i = 0; i < shuffledArray.length; i++) {
-    document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;p&gt; &lt;input id="answer' + (i+1) + '" name="answer' + qnumber + '" type="text" size="1"&gt; ' + shuffledArray[i] + '&lt;/p&gt;</pre>');
+    document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;p&gt;&lt;label&gt; &lt;input id="order-answer' + (i+1) + '" name="order-answer' + qnumber + '" type="text" size="1"&gt; ' + shuffledArray[i] + '&lt;/label&gt;&lt;/p&gt;</pre>');
     } // end of for loop
 
-document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;button class="btn btn-light" onclick="checkOrder' + qnumber + '()"&gt;Submit&lt;/button&gt; &lt;br&gt;&lt;br&gt; &lt;p id="results' + qnumber + '"&gt; &lt;/p&gt;&lt;script&gt;function checkOrder' + qnumber + '() {var result' + qnumber + '; var guessArray' + qnumber + ' = []; var guessColl' + qnumber + ' = document.getElementsByName("answer' + qnumber + '"); for (var i = 0; i < guessColl' + qnumber + '.length; i++) { if (guessColl' + qnumber + '[i].value !== null && guessColl' + qnumber + '[i].value !== "") { guessArray' + qnumber + '.push(guessColl' + qnumber + '[i].value); } } var correctOrder' + qnumber + ' = [');
+document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;button class="btn btn-light" onclick="checkOrder' + qnumber + '()"&gt;Submit&lt;/button&gt; &lt;br&gt;&lt;br&gt; &lt;p id="order-result' + qnumber + '"&gt; &lt;/p&gt;&lt;script&gt;function checkOrder' + qnumber + '() {var result' + qnumber + '; var guessArray' + qnumber + ' = []; var guessColl' + qnumber + ' = document.getElementsByName("order-answer' + qnumber + '"); for (var i = 0; i < guessColl' + qnumber + '.length; i++) { if (guessColl' + qnumber + '[i].value !== null && guessColl' + qnumber + '[i].value !== "") { guessArray' + qnumber + '.push(guessColl' + qnumber + '[i].value); } } var correctOrder' + qnumber + ' = [');
 
 for (var i = 0; i < shuffledArray.length; i++) {
    document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>"' + (origArray.indexOf(shuffledArray[i]) + 1) + '", ');
 } // end of for loop
 
- document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>]; if (JSON.stringify(guessArray' + qnumber + ') === JSON.stringify(correctOrder' + qnumber + ')) {result' + qnumber + ' = \"&lt;b style=\'color:green\'&gt;Correct!&lt;/b&gt;";}else {result' + qnumber + ' = "&lt;b style=\'color:red\'&gt;Incorrect! Try again!&lt;/b&gt;";}document.getElementById("results' + qnumber + '").innerHTML = result' + qnumber +  ';}&lt;/script&gt; &lt;p&gt;&lt;/p&gt;</pre>');
+ document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>]; if (JSON.stringify(guessArray' + qnumber + ') === JSON.stringify(correctOrder' + qnumber + ')) {result' + qnumber + ' = \"&lt;strong style=\'color:green\'&gt;Correct!&lt;/strong&gt;";} else {result' + qnumber + ' = "&lt;strong style=\'color:red\'&gt;Incorrect! Try again!&lt;/strong&gt;";}document.getElementById("order-result' + qnumber + '").innerHTML = result' + qnumber +  ';}&lt;/script&gt; &lt;/fieldset&gt;</pre>');
 
 } // end of if collection not empty
 else
@@ -65,7 +65,7 @@ else
 } // end of for loop
 } // end of check for empty 1 & 2 boxes
 } // end of createCode function
-  
+
 function copyCode(id)
 {
 var r = document.createRange();
@@ -78,83 +78,79 @@ window.getSelection().removeAllRanges();
 
 function clearCode(id)
 {
+  document.getElementById(id).innerHTML = "";
+}
+
+function clearQuestion()
+{
   document.getElementById("qnumber").value = "";
   document.getElementById("directions").value = "";
-  document.getElementById(id).innerHTML = "";
   for (var i = 0; i < document.getElementsByName("order").length; i++) {
     document.getElementsByName("order")[i].value = "";
+  }
 }
-}
+
 </script>
 </head>
 <body>
   <div class="container-fluid">
 <div class="row">
 <div class="col-sm-10 offset-sm-1">
-  <br><br>
+<h1>Create Code for Ordering Questions</h1>
   <h2>Sample Ordering Question</h2>
-<p>Order the following states from largest (1) to smallest (6) by area.</p>
-<p><input id="answer1" name="answer" type="text" size="1"/> Louisiana</p>
-<p><input id="answer2" name="answer" type="text" size="1"/> South Carolina</p>
-<p><input id="answer3" name="answer" type="text" size="1"/> Oklahoma</p>
-<p><input id="answer4" name="answer" type="text" size="1"/> Alaska</p>
-<p><input id="answer5" name="answer" type="text" size="1"/> Montana</p>
-<p><input id="answer6" name="answer" type="text" size="1"/> Rhode Island</p>
- <button id="btn" class="btn btn-light" onclick="checkOrder()">Submit</button>
- <br><br>
-  <p id="results"></p>
+<fieldset><legend>Order the following states from largest (1) to smallest (6) by area.</legend>
+<p><label><input id="order-answer1" name="order-answer" type="text" size="1" /> Louisiana</label></p>
+<p><label><input id="order-answer2" name="order-answer" type="text" size="1" /> South Carolina</label></p>
+<p><label><input id="order-answer3" name="order-answer" type="text" size="1" /> Oklahoma</label></p>
+<p><label><input id="order-answer4" name="order-answer" type="text" size="1" /> Alaska</label></p>
+<p><label><input id="order-answer5" name="order-answer" type="text" size="1" /> Montana</label></p>
+<p><label><input id="order-answer6" name="order-answer" type="text" size="1" /> Rhode Island</label></p>
+<button id="btn" class="btn btn-light" onclick="checkOrder()">Submit</button> <br /><br />
+<p id="order-result"></p>
 <script>
 function checkOrder() {
 var result;
 // create array from student guesses
 var guessArray = [];
-var guessColl = document.getElementsByName("answer");
+var guessColl = document.getElementsByName("order-answer");
 for (var i = 0; i < guessColl.length; i++) {
-  if (guessColl[i].value !== null && guessColl[i].value !== '') { 
+  if (guessColl[i].value !== null && guessColl[i].value !== '') {
     guessArray.push(guessColl[i].value);
   }
     }
 // set correct order
-var correctOrder = ["4", "5", "3", "1", "2", "6"]; 
+var correctOrder = ["4", "5", "3", "1", "2", "6"];
 // determine if student guesses match correct order
-if (JSON.stringify(guessArray) === JSON.stringify(correctOrder)) {result = "<b style='color:green'>Correct!</b>";} 
-else {result = "<b style='color:red'>Incorrect! Try again!</b>";}
-document.getElementById("results").innerHTML = result;}
-</script>  <hr>
-<h2>Create Ordering Question</h2>
-
-<p>Enter the question number: <input id="qnumber" type="text" size="5" /> (Leave blank if you only need one question per page)   </p>
-<p> Enter the directions: <input id="directions" type="text" size="50" /></p>
-  <p>Enter the answers in the correct order below. They will be shuffled when the code is generated.</p>
-<p> 1. <input id="order1" name="order" type="text" size="30" /></p>
-<p> 2. <input id="order2" name="order" type="text" size="30" /></p>
-<p> 3. <input id="order3" name="order" type="text" size="30" /></p>
-<p> 4. <input id="order4" name="order" type="text" size="30" /></p>
-<p> 5. <input id="order5" name="order" type="text" size="30" /></p>
-<p> 6. <input id="order6" name="order" type="text" size="30" /></p>
-  
-<p><button class="btn btn-light" onclick="createCode()">Create Code</button> </p>
-
+if (JSON.stringify(guessArray) === JSON.stringify(correctOrder)) {result = "<strong style='color:green'>Correct!</strong>";}
+else {result = "<strong style='color:red'>Incorrect! Try again!</strong>";}
+document.getElementById("order-result").innerHTML = result;}
+</script>
+</fieldset>
+<hr />
+<h2>Create Your Own Question:</h2>
+<fieldset>
+<p><label>Enter the question number: <input id="qnumber" type="text" size="5" /> (Leave blank if you only need one ordering question per page)</label></p>
+<p><label>Enter the directions for your ordering question: <input id="directions" type="text" size="50" /></label></p>
+<p>Enter the answers in the correct order below. They will be shuffled when the code is generated. (You do not have to use all six.)</p>
+<p><label>1. <input id="order1" name="order" type="text" size="50" /></label></p>
+<p><label>2. <input id="order2" name="order" type="text" size="50" /></label></p>
+<p><label>3. <input id="order3" name="order" type="text" size="50" /></label></p>
+<p><label>4. <input id="order4" name="order" type="text" size="50" /></label></p>
+<p><label>5. <input id="order5" name="order" type="text" size="50" /></label></p>
+<p><label>6. <input id="order6" name="order" type="text" size="50" /></label></p>
+</fieldset>
+<p><button class="btn btn-success" onclick="createCode()">Create Code</button> <button id="clearQ" class="btn btn-danger" onclick="clearQuestion()">Clear Question</button></p>
 <p>Code will generate below:</p>
 <p id="generate" style="user-select: all;" class="bg-light"></p>
-
-<button id="copied" class="btn btn-light" onclick="copyCode('generate')">Copy Code</button>
-<button id="clear" class="btn btn-light" onclick="clearCode('generate')">Clear Code</button>
-  
-  <hr>
-  <h2> Copy & Paste Code</h2>
+<button id="copied" class="btn btn-success" onclick="copyCode('generate')">Copy Code</button> <button id="clear" class="btn btn-danger" onclick="clearCode('generate')">Clear Code</button><hr />
+<h2> Copy & Paste Code</h2>
 <p>Click the Copy Code button above to copy the code to the clipboard. On your D2L page, open the HTML editor, click the Insert Stuff icon, choose Enter Embed Code, right-click and choose Paste. (The preview will not be accurate.)</p>
-
 <p><strong>Make sure to click Save and Close BEFORE testing the buttons. DO NOT CLICK on the buttons while still in editing mode or D2L will change the code.</strong></p>
-
 <p>To add another question, click Clear Code above to clear out the boxes and start over.</p>
-
 <p>Student answers are not tracked or graded and will be reset when refreshing the page.</p>  
-  
+  </div>
 </div>
 </div>
-</div>
-
 <script>
 $(document).ready(function(){
     $('#copied').tooltip({title: "Code Copied!", trigger: "click", placement: "bottom"});
