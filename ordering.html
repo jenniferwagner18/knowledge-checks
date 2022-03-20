@@ -64,7 +64,7 @@ for (var i = 0; i < shuffledArray.length; i++) {
    document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>"' + (origArray.indexOf(shuffledArray[i]) + 1) + '", ');
 } // end of for loop
 
- document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>]; if (JSON.stringify(guessArray' + qnumber + ') === JSON.stringify(correctOrder' + qnumber + ')) {result' + qnumber + ' = \"&lt;strong style=\'color:green\'&gt;Correct!&lt;/strong&gt;";} else {result' + qnumber + ' = "&lt;strong style=\'color:red\'&gt;Incorrect! Try again!&lt;/strong&gt;";}document.getElementById("order-result' + qnumber + '").innerHTML = result' + qnumber +  ';}&lt;/script&gt; &lt;/fieldset&gt;</pre>');
+ document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>]; if (JSON.stringify(guessArray' + qnumber + ') === JSON.stringify(correctOrder' + qnumber + ')) {result' + qnumber + ' = \"&lt;strong style=\'color:green\'&gt;Correct!&lt;/strong&gt;";} else {result' + qnumber + ' = "&lt;strong style=\'color:#dc143c\'&gt;Incorrect! Try again!&lt;/strong&gt;";}document.getElementById("order-result' + qnumber + '").innerHTML = result' + qnumber +  ';}&lt;/script&gt; &lt;/fieldset&gt;</pre>');
 
 } // end of if collection not empty
 else
