@@ -5,27 +5,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <script>
-
 function createCode()
 {
   // throw alert if answer box is empty
   if (document.getElementById("correct").value == "") {
-    window.alert("Please enter at least one correct answer.")
+    window.alert("Please enter at least one correct answer for your short answer question.")
   } else {
 
 qno = document.getElementById("number").value;
 theQuestion = document.getElementById("question").value;
 correctAnswer = document.getElementById("correct").value.toLowerCase();
 additionalAnswer = document.getElementById("additional").value.toLowerCase();
-document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;p&gt;' + theQuestion + '&lt;/p&gt; &lt;input id="answer' + qno + '" type="text" size="30" onclick="this.value = \'\'"&gt;&lt;button class="btn btn-light" onclick="check' + qno + '()"&gt;Submit&lt;/button&gt; &lt;p id="result' + qno + '"&gt; &lt;/p&gt;&lt;script&gt;function check' + qno + '() {var guess' + qno + ', feedback' + qno + '; guess' + qno + ' = document.getElementById("answer' + qno + '").value.toLowerCase();if (guess' + qno + ' == "' + correctAnswer + '"</pre>');
+document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;fieldset&gt;&lt;legend&gt;&lt;label for="answer"&gt;' + theQuestion + '&lt;/label&gt;&lt;/legend&gt; &lt;input id="answer' + qno + '" type="text" size="30" onclick="this.value = \'\'"&gt;&lt;button class="btn btn-light" onclick="check' + qno + '()"&gt;Submit&lt;/button&gt; &lt;p id="result' + qno + '"&gt; &lt;/p&gt;&lt;script&gt;function check' + qno + '() {var guess' + qno + ', feedback' + qno + '; guess' + qno + ' = document.getElementById("answer' + qno + '").value.toLowerCase();if (guess' + qno + ' == "' + correctAnswer + '"</pre>');
 
  if (additionalAnswer !== "")
    {document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>|| guess' + qno + ' == "' + additionalAnswer + '"</pre>');
     }
 
-document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>) {feedback' + qno + ' = \"&lt;b style=\'color:green\'&gt;Correct!&lt;/b&gt;";}else {feedback' + qno + ' = "&lt;b style=\'color:red\'&gt;Incorrect! Try again!&lt;/b&gt;";}document.getElementById("result' + qno + '").innerHTML = feedback' + qno +  ';}&lt;/script&gt; &lt;p&gt;&lt;/p&gt;</pre>');
+document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>) {feedback' + qno + ' = \"&lt;strong style=\'color:green\'&gt;Correct!&lt;/strong&gt;";}else {feedback' + qno + ' = "&lt;strong style=\'color:red\'&gt;Incorrect! Try again!&lt;/strong&gt;";}document.getElementById("result' + qno + '").innerHTML = feedback' + qno +  ';}&lt;/script&gt; &lt;/fieldset&gt;</pre>');
 } // end of check for empty box
 } // end of createCode function
 
@@ -42,56 +40,54 @@ window.getSelection().removeAllRanges();
 function clearCode(id)
 {
   document.getElementById(id).innerHTML = "";
+}
+
+function clearQuestion() {
   document.getElementById("number").value = "";
   document.getElementById("question").value = "";
   document.getElementById("correct").value = "";
   document.getElementById("additional").value = "";
 }
-
 </script>
 </head>
 <body>
   <div class="container-fluid">
 <div class="row">
 <div class="col-sm-10 offset-sm-1">
-  <br><br>
-  <h2>Sample Short Answer Question</h2>
-<p>What is the most popular pet?</p>
-<input id="answer" type="text" size="30" onclick="this.value=''"/> <button id="btn" class="btn btn-light" onclick="check()">Submit</button>
+<h1>Create Code for Short Answer or Fill in the Blank Questions</h1>
+<h2>Sample Short Answer Question</h2>
+<fieldset><legend><label for="answer">What is the most popular pet?</label></legend>
+<input id="answer" type="text" size="30" onclick="this.value=''" /> <button class="btn btn-light" onclick="check()">Submit</button>
 <p id="result"></p>
 <script>
 function check() {var guess, feedback;
 guess = document.getElementById("answer").value.toLowerCase();
-if (guess == "dog") {feedback = "<b style='color:green'>Correct!</b>";} 
-else {feedback = "<b style='color:red'>Incorrect! Try again!</b>";}
+if (guess == "dog") {feedback = "<strong style='color:green'>Correct!</strong>";}
+else {feedback = "<strong style='color:red'>Incorrect! Try again!</strong>";}
 document.getElementById("result").innerHTML = feedback;}
-</script>  <hr>
-<h2>Create Short Answer or Fill in the Blank Question</h2>
-<p>Enter the question number and the correct answer below as well as an additional correct answer, if needed. For example, this can account for spelling variations (color and colour) or numbers as words and digits (ten and 10). Your text will be changed to lowercase so the answers will be case insensitive. You only need to enter the question number if you are inserting more than one question per page.</p>
-<p>Enter the question number: <input id="number" type="text" size="5" /> (Leave blank if you only need one question per page)   </p>
- <p> Enter the question: <input id="question" type="text" size="50" /></p>
-<p>Enter the correct answer: <input id="correct" type="text" size="40" /></p>
-<p>Enter an additional correct answer: <input id="additional" type="text" size="40" /> (not required)</p>
-<p><button class="btn btn-light" onclick="createCode()">Create Code</button> </p>
-
+</script>
+</fieldset>
+<hr />
+<h2>Create Your Own Question:</h2>
+<p>Enter the question number and the correct answer below as well as an additional correct answer, if needed. For example, this can account for spelling variations (color and colour) or numbers as words and digits (ten and 10). Your text will be changed to lowercase so the answers will be case insensitive. You only need to enter the question number if you are inserting more than one short answer question per page.</p>
+<fieldset>
+<p><label>Enter the question number: <input id="number" type="text" size="5" /> (Leave blank if you only need one short answer question per page)</label></p>
+<p><label>Enter the question: <input id="question" type="text" size="50" /></label></p>
+<p><label>Enter the correct answer: <input id="correct" type="text" size="40" /></label></p>
+<p><label>Enter an additional correct answer: <input id="additional" type="text" size="40" /> (not required)</label></p>
+</fieldset>
+<p><button class="btn btn-success" onclick="createCode()">Create Code</button> <button id="clearQ" class="btn btn-danger" onclick="clearQuestion()">Clear Question</button></p>
 <p>Code will generate below:</p>
 <p id="generate" style="user-select: all;" class="bg-light"></p>
-
-<button id="copied" class="btn btn-light" onclick="copyCode('generate')">Copy Code</button>
-<button id="clear" class="btn btn-light" onclick="clearCode('generate')">Clear Code</button>
-   <hr>
-  <h2> Copy & Paste Code</h2>
+<button id="copied" class="btn btn-success" onclick="copyCode('generate')">Copy Code</button> <button id="clear" class="btn btn-danger" onclick="clearCode('generate')">Clear Code</button><hr />
+<h2> Copy & Paste Code</h2>
 <p>Click the Copy Code button above to copy the code to the clipboard. On your D2L page, open the HTML editor, click the Insert Stuff icon, choose Enter Embed Code, right-click and choose Paste. (The preview will not be accurate.)</p>
-
 <p><strong>Make sure to click Save and Close BEFORE testing the buttons. DO NOT CLICK on the buttons while still in editing mode or D2L will change the code.</strong></p>
-
 <p>To add another question, click Clear Code above to clear out the boxes and start over.</p>
-
 <p>Student answers are not tracked or graded and will be reset when refreshing the page.</p> 
 </div>
 </div>
 </div>
-  
 <script>
 $(document).ready(function(){
     $('#copied').tooltip({title: "Code Copied!", trigger: "click", placement: "bottom"});
