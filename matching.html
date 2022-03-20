@@ -25,10 +25,22 @@ button.btn-danger {
  <fieldset><legend>Choose a university in the left column and then choose the corresponding mascot in the right column.</legend>
  <div class="container">
  <div class="row">
- <div class="col-sm"><input type="button" class="btn btn-light btn-block" value="Purdue" onclick="this.value='1. Purdue'; this.style.backgroundColor='#BDD9BF'; this.style.color='white';" /> <input type="button" class="btn btn-light btn-block" value="Michigan State" onclick="this.value='2. Michigan State'; this.style.backgroundColor='#929084'; this.style.color='white';" /> <input type="button" class="btn btn-light btn-block" value="Penn State" onclick="this.value='3. Penn State'; this.style.backgroundColor='#FFC857'; this.style.color='white';" /> <input type="button" class="btn btn-light btn-block" value="Michigan" onclick="this.value='4. Michigan'; this.style.backgroundColor='#A997DF'; this.style.color='white';" /> <input type="button" class="btn btn-light btn-block" value="Rutgers" onclick="this.value='5. Rutgers'; this.style.backgroundColor='#E5323B'; this.style.color='white';" /> <input type="button" class="btn btn-light btn-block" value="Illinois" onclick="this.value='6. Illinois'; this.style.backgroundColor='#2E4052'; this.style.color='white';" />
+ <div class="col-sm">
+   <input type="button" class="btn btn-light btn-block" value="Purdue" onclick="this.value='1. Purdue'; this.style.backgroundColor='#B81414'; this.style.color='white';" /> 
+  <input type="button" class="btn btn-light btn-block" value="Michigan State" onclick="this.value='2. Michigan State'; this.style.backgroundColor='#AB5D03'; this.style.color='white';" /> 
+  <input type="button" class="btn btn-light btn-block" value="Penn State" onclick="this.value='3. Penn State'; this.style.backgroundColor='#6E7002'; this.style.color='white';" /> 
+  <input type="button" class="btn btn-light btn-block" value="Michigan" onclick="this.value='4. Michigan'; this.style.backgroundColor='#02701E'; this.style.color='white';" /> 
+  <input type="button" class="btn btn-light btn-block" value="Rutgers" onclick="this.value='5. Rutgers'; this.style.backgroundColor='#144BB8'; this.style.color='white';" /> 
+  <input type="button" class="btn btn-light btn-block" value="Illinois" onclick="this.value='6. Illinois'; this.style.backgroundColor='#2B0270'; this.style.color='white';" />
  <p></p>
  </div>
- <div class="col-sm"><input type="button" class="btn btn-light btn-block" value="Scarlet Knights" onclick="this.style.backgroundColor='#E5323B'; this.style.color='white'; this.value='5. Scarlet Knights';" /> <input type="button" class="btn btn-light btn-block" value="Wolverines" onclick="this.style.backgroundColor='#A997DF'; this.style.color='white'; this.value='4. Wolverines';" /> <input type="button" class="btn btn-light btn-block" value="Nittany Lions" onclick="this.style.backgroundColor='#FFC857'; this.style.color='white'; this.value='3. Nittany Lions';" /> <input type="button" class="btn btn-light btn-block" value="Illini" onclick="this.style.backgroundColor='#2E4052'; this.style.color='white'; this.value='6. Illini';" /> <input type="button" class="btn btn-light btn-block" value="Boilermakers" onclick="this.style.backgroundColor='#BDD9BF'; this.style.color='white'; this.value='1. Boilermakers';" /> <input type="button" class="btn btn-light btn-block" value="Spartans" onclick="this.style.backgroundColor='#929084'; this.style.color='white'; this.value='2. Spartans';" /></div>
+ <div class="col-sm">
+   <input type="button" class="btn btn-light btn-block" value="Scarlet Knights" onclick="this.style.backgroundColor='#144BB8'; this.style.color='white'; this.value='5. Scarlet Knights';" /> 
+   <input type="button" class="btn btn-light btn-block" value="Wolverines" onclick="this.style.backgroundColor='#02701E'; this.style.color='white'; this.value='4. Wolverines';" /> 
+   <input type="button" class="btn btn-light btn-block" value="Nittany Lions" onclick="this.style.backgroundColor='#6E7002'; this.style.color='white'; this.value='3. Nittany Lions';" /> 
+   <input type="button" class="btn btn-light btn-block" value="Illini" onclick="this.style.backgroundColor='#2B0270'; this.style.color='white'; this.value='6. Illini';" /> 
+   <input type="button" class="btn btn-light btn-block" value="Boilermakers" onclick="this.style.backgroundColor='#B81414'; this.style.color='white'; this.value='1. Boilermakers';" /> 
+   <input type="button" class="btn btn-light btn-block" value="Spartans" onclick="this.style.backgroundColor='#AB5D03'; this.style.color='white'; this.value='2. Spartans';" /></div>
  </div>
  </div>
  </fieldset>
@@ -72,7 +84,7 @@ function createCodeMA()
     } else {
 
   // set color palette
-  var colorPalette = ["#BDD9BF", "#929084", "#FFC857", "#A997DF", "#E5323B", "#2E4052"];
+  var colorPalette = ["#B81414", "#AB5D03", "#6E7002", "#02701E", "#144BB8", "#2B0270"];
 
   // directions paragraph
   var theDirections = document.getElementById("matching").value;
