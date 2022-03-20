@@ -131,7 +131,7 @@ for (var i = 0; i < guessColl.length; i++) {
 var correctOrder = ["4", "5", "3", "1", "2", "6"];
 // determine if student guesses match correct order
 if (JSON.stringify(guessArray) === JSON.stringify(correctOrder)) {result = "<strong style='color:green'>Correct!</strong>";}
-else {result = "<strong style='color:red'>Incorrect! Try again!</strong>";}
+else {result = "<strong style='color:#dc143c'>Incorrect! Try again!</strong>";}
 document.getElementById("order-result").innerHTML = result;}
 </script>
 </fieldset>
