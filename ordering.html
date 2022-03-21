@@ -58,7 +58,7 @@ for (var i = 0; i < shuffledArray.length; i++) {
     document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;p&gt;&lt;label&gt; &lt;input id="order-answer' + (i+1) + '" name="order-answer' + qnumber + '" type="text" size="1"&gt; ' + shuffledArray[i] + '&lt;/label&gt;&lt;/p&gt;</pre>');
     } // end of for loop
 
-document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;button class="btn btn-light" onclick="checkOrder' + qnumber + '()"&gt;Submit&lt;/button&gt; &lt;br&gt;&lt;br&gt; &lt;p id="order-result' + qnumber + '"&gt; &lt;/p&gt;&lt;script&gt;function checkOrder' + qnumber + '() {var result' + qnumber + '; var guessArray' + qnumber + ' = []; var guessColl' + qnumber + ' = document.getElementsByName("order-answer' + qnumber + '"); for (var i = 0; i < guessColl' + qnumber + '.length; i++) { if (guessColl' + qnumber + '[i].value !== null && guessColl' + qnumber + '[i].value !== "") { guessArray' + qnumber + '.push(guessColl' + qnumber + '[i].value); } } var correctOrder' + qnumber + ' = [');
+document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;button class="btn btn-light" onclick="checkOrder' + qnumber + '()"&gt;Submit&lt;/button&gt; &lt;br&gt;&lt;br&gt; &lt;p id="order-result' + qnumber + '" role="alert"&gt; &lt;/p&gt;&lt;script&gt;function checkOrder' + qnumber + '() {var result' + qnumber + '; var guessArray' + qnumber + ' = []; var guessColl' + qnumber + ' = document.getElementsByName("order-answer' + qnumber + '"); for (var i = 0; i < guessColl' + qnumber + '.length; i++) { if (guessColl' + qnumber + '[i].value !== null && guessColl' + qnumber + '[i].value !== "") { guessArray' + qnumber + '.push(guessColl' + qnumber + '[i].value); } } var correctOrder' + qnumber + ' = [');
 
 for (var i = 0; i < shuffledArray.length; i++) {
    document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>"' + (origArray.indexOf(shuffledArray[i]) + 1) + '", ');
@@ -115,7 +115,7 @@ function clearQuestion()
 <p><label><input id="order-answer5" name="order-answer" type="text" size="1" /> Montana</label></p>
 <p><label><input id="order-answer6" name="order-answer" type="text" size="1" /> Rhode Island</label></p>
 <button id="btn" class="btn btn-light" onclick="checkOrder()">Submit</button> <br /><br />
-<p id="order-result"></p>
+<p id="order-result" role="alert"></p>
 <script>
 function checkOrder() {
 var result;
