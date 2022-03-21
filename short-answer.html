@@ -26,7 +26,7 @@ qno = document.getElementById("number").value;
 theQuestion = document.getElementById("question").value;
 correctAnswer = document.getElementById("correct").value.toLowerCase();
 additionalAnswer = document.getElementById("additional").value.toLowerCase();
-document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;fieldset&gt;&lt;legend&gt;&lt;label for="answer"&gt;' + theQuestion + '&lt;/label&gt;&lt;/legend&gt; &lt;input id="answer' + qno + '" type="text" size="30" onclick="this.value = \'\'"&gt;&lt;button class="btn btn-light" onclick="check' + qno + '()"&gt;Submit&lt;/button&gt; &lt;p id="result' + qno + '" role="alert"&gt; &lt;/p&gt;&lt;script&gt;function check' + qno + '() {var guess' + qno + ', feedback' + qno + '; guess' + qno + ' = document.getElementById("answer' + qno + '").value.toLowerCase();if (guess' + qno + ' == "' + correctAnswer + '"</pre>');
+document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;fieldset&gt;&lt;legend&gt;' + theQuestion + '&lt;/legend&gt; &lt;input id="answer' + qno + '" type="text" size="30" onclick="this.value = \'\'" aria-label="Answer"&gt;&lt;button class="btn btn-light" onclick="check' + qno + '()"&gt;Submit&lt;/button&gt; &lt;p id="result' + qno + '" role="alert"&gt; &lt;/p&gt;&lt;script&gt;function check' + qno + '() {var guess' + qno + ', feedback' + qno + '; guess' + qno + ' = document.getElementById("answer' + qno + '").value.toLowerCase();if (guess' + qno + ' == "' + correctAnswer + '"</pre>');
 
  if (additionalAnswer !== "")
    {document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>|| guess' + qno + ' == "' + additionalAnswer + '"</pre>');
