@@ -26,13 +26,12 @@ qno = document.getElementById("number").value;
 theQuestion = document.getElementById("question").value;
 correctAnswer = document.getElementById("correct").value.toLowerCase();
 additionalAnswer = document.getElementById("additional").value.toLowerCase();
-document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;fieldset&gt;&lt;legend&gt;' + theQuestion + '&lt;/legend&gt; &lt;input id="answer' + qno + '" type="text" size="30" onclick="this.value = \'\'" aria-label="Answer"&gt;&lt;button class="btn btn-light" onclick="check' + qno + '()"&gt;Submit&lt;/button&gt; &lt;p id="result' + qno + '" role="alert"&gt; &lt;/p&gt;&lt;script&gt;function check' + qno + '() {var guess' + qno + ', feedback' + qno + '; guess' + qno + ' = document.getElementById("answer' + qno + '").value.toLowerCase();if (guess' + qno + ' == "' + correctAnswer + '"</pre>');
+document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;fieldset&gt;&lt;legend&gt;' + theQuestion + '&lt;/legend&gt; &lt;input id="answer' + qno + '" type="text" size="30" aria-label="Answer"&gt;&lt;button class="btn btn-dark" onclick="checkSA' + qno + '()"&gt;Check Answer&lt;/button&gt; &lt;div id="result' + qno + '" role="alert"&gt; &lt;p&gt;Feedback will show here.&lt;/p&gt; &lt;/div&gt; &lt;script&gt; var SAclicks' + qno + ' = 0; function checkSA' + qno + '() { SAclicks' + qno + ' += 1; var guess; guess = document.getElementById("answer' + qno + '").value.toLowerCase();if (guess == "' + correctAnswer + '"</pre>');
 
  if (additionalAnswer !== "")
-   {document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>|| guess' + qno + ' == "' + additionalAnswer + '"</pre>');
-    }
+   { document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>|| guess == "' + additionalAnswer + '"</pre>'); }
 
-document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>) {feedback' + qno + ' = \"&lt;strong style=\'color:green\'&gt;Correct!&lt;/strong&gt;";}else {feedback' + qno + ' = "&lt;strong style=\'color:#dc143c\'&gt;Incorrect! Try again!&lt;/strong&gt;";}document.getElementById("result' + qno + '").innerHTML = feedback' + qno +  ';}&lt;/script&gt; &lt;/fieldset&gt;</pre>');
+document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>) { const green = document.createElement("strong"); green.style.color = "green";  green.innerHTML = "Attempt " + SAclicks' + qno + ' + ": Correct!"; element = document.getElementById("result' + qno + '").children[0]; element.replaceChild(green, element.childNodes[0]); } else { const red = document.createElement("strong"); red.style.color = "#dc143c"; red.innerHTML = "Attempt " + SAclicks' + qno + ' + ": Incorrect! Try again!"; element = document.getElementById("result' + qno + '").children[0]; element.replaceChild(red, element.childNodes[0]); } } &lt;/script&gt; &lt;/fieldset&gt;</pre>');
 } // end of check for empty box
 } // end of createCode function
 
@@ -60,22 +59,39 @@ function clearQuestion() {
 </script>
 </head>
 <body>
-  <div class="container-fluid">
+<div class="container-fluid">
 <div class="row">
 <div class="col-sm-10 offset-sm-1">
 <h1>Create Code for Short Answer or Fill in the Blank Questions</h1>
 <h2>Sample Short Answer Question</h2>
 <fieldset><legend><label for="answer">What is the most popular pet?</label></legend>
-<input id="answer" type="text" size="30" onclick="this.value=''" /> <button class="btn btn-light" onclick="check()">Submit</button>
-<p id="result" role="alert"></p>
+<input id="answer" type="text" size="30" aria-label="Answer"> <button class="btn btn-dark" onclick="checkSA()">Check Answer</button>
+<div id="result" role="alert"><p>Feedback will show here.</p></div>
 <script>
-function check() {var guess, feedback;
+var SAclicks = 0;
+function checkSA() {
+SAclicks += 1;
+var guess, feedback;
 guess = document.getElementById("answer").value.toLowerCase();
-if (guess == "dog") {feedback = "<strong style='color:green'>Correct!</strong>";}
-else {feedback = "<strong style='color:#dc143c'>Incorrect! Try again!</strong>";}
-document.getElementById("result").innerHTML = feedback;}
+if (guess == "dog" || guess == "DOG") 
+{
+  const green = document.createElement("strong");
+  green.style.color = "green";
+  green.innerHTML = "Attempt " + SAclicks + ": Correct!";
+  element = document.getElementById("result").children[0];
+  element.replaceChild(green, element.childNodes[0]);
+}
+else 
+{
+const red = document.createElement("strong");
+red.style.color = "#dc143c";
+red.innerHTML = "Attempt " + SAclicks + ": Incorrect! Try again!";
+element = document.getElementById("result").children[0];
+element.replaceChild(red, element.childNodes[0]);
+}
+}
 </script>
-</fieldset>
+
 <hr />
 <h2>Create Your Own Question:</h2>
 <p>Enter the question number and the correct answer below as well as an additional correct answer, if needed. For example, this can account for spelling variations (color and colour) or numbers as words and digits (ten and 10). Your text will be changed to lowercase so the answers will be case insensitive. You only need to enter the question number if you are inserting more than one short answer question per page.</p>
@@ -92,7 +108,7 @@ document.getElementById("result").innerHTML = feedback;}
 <h2> Copy & Paste Code</h2>
 <p>Click the Copy Code button above to copy the code to the clipboard. On your D2L page, open the HTML editor, click the Insert Stuff icon, choose Enter Embed Code, right-click and choose Paste. (The preview will not be accurate.)</p>
 <p><strong>Make sure to click Save and Close BEFORE testing the buttons. DO NOT CLICK on the buttons while still in editing mode or D2L will change the code.</strong></p>
-<p>To add another question, click Clear Code above to clear out the boxes and start over.</p>
+<p>To add another question, click Clear Question and Clear Code above to clear out the boxes and start over.</p>
 <p>Student answers are not tracked or graded and will be reset when refreshing the page.</p> 
 </div>
 </div>
