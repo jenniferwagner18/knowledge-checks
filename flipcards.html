@@ -6,81 +6,83 @@
 <style>
 .flip-card, .flip-card-click {
   display: inline-block;
-  background-color: transparent;
-  width: 300px;
-  height: 300px;
-  margin-right: 12px;
-  margin-bottom: 12px;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner,
-.flip-card:focus-within .flip-card-inner,
-.flip-card:active .flip-card-inner,
-.flip-card:focus .flip-card-inner,
-.flip-card-click:active .flip-card-inner,
-.flip-card-click:focus .flip-card-inner,
-.flip-card-click.flipped .flip-card-inner
-{
-  transform: rotateY(180deg);
-}
-  
-.flip-card-inner:focus, .flip-card-inner:hover {
-  outline: 5px solid #03c23c;
-  cursor: pointer;
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-}
-
-.flip-card-front p, .flip-card-back p {
-  padding: 10px;
-  font-size: 16pt;
-}
-
-.flip-card-front {
-  background-color: #18453b;
-  color: white;
-}
-
-.flip-card-back {
-  background-color: #008183;
-  color: white;
-  transform: rotateY(180deg);
-}
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card-inner,
+  .flip-card:focus .flip-card-inner,
+  .flip-card:focus-within .flip-card-inner,
+  .flip-card:active .flip-card-inner, 
+  .flip-card-click:focus .flip-card-inner,
+  .flip-card-click:active .flip-card-inner,
+  .flip-card-click.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-inner:focus {
+    outline: 5px solid #03c23c;
+    cursor: pointer;
+  }
+  .flip-card-inner:hover {
+    outline: 5px solid #0336c2;
+    cursor: pointer;
+  }
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  .flip-card-front h2 {
+      color: white;
+      font-size: 16pt;
+      font-weight: 500;
+      padding: 10px;
+    }
+  .flip-card-front p, .flip-card-back p {
+    padding: 10px;
+    font-size: 16pt;
+    color: white;
+  }
+  .flip-card-front {
+    background-color: #18453b;
+  }
+  .flip-card-back {
+    background-color: #008183;
+    transform: rotateY(180deg);
+  }
 </style>
-<title>Flipcards</title>
+<title>Flip Cards</title>
 </head>
   
 <body>
 <div class="container-fluid">
 <div class="col-sm-10 offset-sm-1">
 
-  <h1>Flipcards</h1>
+<h1>Flip Cards</h1>
+<p>If adding images on front side, still use heading with Bootstrap class of sr-only to add text so that screen readers will include it in list of headings.</p>
 <h2>Hover, Tap, or Tab to Flip the Card (CSS Only)</h2>
-
-<div class="flip-card" aria-roledescription="flipping card">
-  <div class="flip-card-inner" tabindex="0">
+<!-- Flip card headings should be changed to respect page hierarchy -->
+<div class="flip-card">
+  <div class="flip-card-inner" tab-index="0">
     <div class="flip-card-front">
-      <p>Card 1 Front</p>
+      <h2>Card 1 Front</h2>
     </div>
     <div class="flip-card-back">
       <p>Card 1 Back</p>
@@ -88,10 +90,10 @@
   </div>
 </div>
 
-<div class="flip-card" aria-roledescription="flipping card">
-  <div class="flip-card-inner" tabindex="0">
+<div class="flip-card">
+  <div class="flip-card-inner" tab-index="0">
     <div class="flip-card-front">
-      <p>Card 2 Front</p>
+      <h2>Card 2 Front</h2>
     </div>
     <div class="flip-card-back">
       <p>Card 2 Back</p>
@@ -99,10 +101,10 @@
   </div>
 </div>
 
-<div class="flip-card" aria-roledescription="flipping card">
-  <div class="flip-card-inner" tabindex="0">
+<div class="flip-card">
+  <div class="flip-card-inner" tab-index="0">
     <div class="flip-card-front">
-      <p>Card 3 Front</p>
+      <h2>Card 3 Front</h2>
     </div>
     <div class="flip-card-back">
       <p>Card 3 Back</p>
@@ -112,10 +114,10 @@
 
  <h2>Click, Tap, or Tab+Enter to Flip the Card (Uses JS)</h2>
 
-<div class="flip-card-click" aria-roledescription="flipping card">
-  <div class="flip-card-inner" tabindex="0">
+<div class="flip-card-click">
+  <div class="flip-card-inner" tab-index="0">
     <div class="flip-card-front">
-      <p>Card 1 Front</p>
+      <h2>Card 1 Front</h2>
     </div>
     <div class="flip-card-back">
       <p>Card 1 Back</p>
@@ -123,10 +125,10 @@
   </div>
 </div>
 
-<div class="flip-card-click" aria-roledescription="flipping card">
+<div class="flip-card-click">
   <div class="flip-card-inner" tabindex="0">
     <div class="flip-card-front">
-      <p>Card 2 Front</p>
+      <h2>Card 2 Front</h2>
     </div>
     <div class="flip-card-back">
       <p>Card 2 Back</p>
@@ -134,10 +136,10 @@
   </div>
 </div>
 
-<div class="flip-card-click" aria-roledescription="flipping card">
-  <div class="flip-card-inner" tabindex="0">
+<div class="flip-card-click">
+  <div class="flip-card-inner" tab-index="0">
     <div class="flip-card-front">
-      <p>Card 3 Front</p>
+      <h2>Card 3 Front</h2>
     </div>
     <div class="flip-card-back">
       <p>Card 3 Back</p>
@@ -149,48 +151,12 @@
 </div>
 </div>
 
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 <script>
-/* Add attributes dynamically so less HTML code */
-document.querySelectorAll('.flip-card-inner').forEach(function(item) { item.setAttribute('tabindex', '0'); });
-document.querySelectorAll('.flip-card-front').forEach(function(item) { item.setAttribute('role', 'button'); item.setAttribute('aria-expanded', true); });
-document.querySelectorAll('.flip-card-back').forEach(function(item) { item.setAttribute('role', 'button'); item.setAttribute('aria-expanded', false); });
-/* Flip card on click or tap or tab/enter */
-document.querySelectorAll('.flip-card-click .flip-card-inner').forEach(function(item) {
+document.querySelectorAll('.flip-card-click .flip-card-inner').forEach(function(item) { 
   item.addEventListener('keypress', function(evt) { if (evt.keyCode == 13 || evt.keyCode == 32) { item.click(); } });
 });
-/* Toggle flipped class when clicked */
-$('.flip-card-click').click(function() {
-    $(this).toggleClass('flipped');
-  });
-/* Add ids to each flip card */
-$.each($(".flip-card"), (function(index) {
-  $(this).attr("id", "flip-card_" + parseInt(index + 1));
-}));
-$.each($(".flip-card-click"), (function(index) {
-    $(this).attr("id", "flip-card-click_" + parseInt(index + 1));
-}));
-/* Front and back of flip cards - add aria-controls and id */
-$.each($(".flip-card-front"), (function(index) {
-  $(this).attr("id", "flip-card-front_" + parseInt(index + 1));
-  $(this).attr("aria-controls", "flip-card-back_" + parseInt(index + 1));
-}));
-$.each($(".flip-card-back"), (function(index) {
-  $(this).attr("id", "flip-card-back_" + parseInt(index + 1));
-  $(this).attr("aria-controls", "flip-card-front_" + parseInt(index + 1));
-}));
-/* Change aria-expanded when clicked or hovered */
-$('.flip-card-click').click(function() {
-  $(this).find(".flip-card-back").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
-  $(this).find(".flip-card-front").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
-});
-$('.flip-card').mouseenter(function() {
-  $(this).find(".flip-card-back").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
-  $(this).find(".flip-card-front").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
-});
-$('.flip-card').mouseleave(function() {
-  $(this).find(".flip-card-back").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
-  $(this).find(".flip-card-front").attr("aria-expanded", function(_, attr){ return !(attr =="true")});
+document.querySelectorAll('.flip-card-click').forEach(function(item) { 
+  item.addEventListener('click', function () { this.classList.toggle('flipped');  });
 });
 </script>
 </body>
