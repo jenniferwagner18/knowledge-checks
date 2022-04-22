@@ -54,19 +54,21 @@ function copyCodeMC(id) {
   document.execCommand('copy');
   window.getSelection().removeAllRanges();
 }
-
+  
 function clearCodeMC(id) {
-  document.getElementById(id).innerHTML = "";
+  if (confirm("Are you sure you want to clear the code?")) 
+    document.getElementById(id).innerHTML = "";
   }
 
 
 function clearQuestion() {
-  document.getElementById("MCquestion").value = "";
-  for (var i = 0; i < document.getElementsByName("choice").length; i++) {
-    document.getElementsByName("choice")[i].value = "";
-    document.getElementsByName("checkbox")[i].checked = false;
+  if (confirm("Are you sure you want to clear the question?")) {
+    document.getElementById("MCquestion").value = "";
+    for (var i = 0; i < document.getElementsByName("choice").length; i++) {
+      document.getElementsByName("choice")[i].value = "";
+      document.getElementsByName("checkbox")[i].checked = false;
+    }
   }
-
 }
 
 </script>
@@ -86,10 +88,11 @@ function clearQuestion() {
 </fieldset>
 <hr>
 <h2>Create Your Own Question:</h2>
-<fieldset>
-<p><label>Enter the multiple choice question: <input id="MCquestion" type="text" size="65" /></label></p>
-<p>Enter your answer choices and check the box(es) next to the correct answer(s). [You do not have to use all five.]</p>
-<label>1. <input id="choice1" name="choice" type="text" size="60" /></label> <label>Check if 1 is correct: <input type="checkbox" name="checkbox" id="check1" /></label> <br /><br />
+<p>Required fields are marked with an asterisk (*).</p>
+<fieldset><legend>Multiple Choice or True/False Question</legend>
+<p><label>Enter the multiple choice or true/false question. * <input id="MCquestion" type="text" size="65" required/></label></p>
+<p>Enter your answer choices and check the box(es) next to the correct answer(s). (You do not have to use all five.)</p>
+<label>Choice 1. * <input id="choice1" name="choice" type="text" size="60" required/></label> <label>Check if 1 is correct: <input type="checkbox" name="checkbox" id="check1" /></label> <br /><br />
 <label>2. <input id="choice2" name="choice" type="text" size="60" /></label> <label>Check if 2 is correct: <input type="checkbox" name="checkbox" id="check2" /></label> <br /><br />
 <label>3. <input id="choice3" name="choice" type="text" size="60" /></label> <label>Check if 3 is correct: <input type="checkbox" name="checkbox" id="check3" /></label> <br /><br />
 <label>4. <input id="choice4" name="choice" type="text" size="60" /></label> <label>Check if 4 is correct: <input type="checkbox" name="checkbox" id="check4" /></label> <br /><br />
