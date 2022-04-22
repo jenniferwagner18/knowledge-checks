@@ -47,14 +47,17 @@ window.getSelection().removeAllRanges();
 
 function clearCode(id)
 {
-  document.getElementById(id).innerHTML = "";
+  if (confirm("Are you sure you want to clear the code?")) 
+    document.getElementById(id).innerHTML = "";
 }
 
 function clearQuestion() {
+  if (confirm("Are you sure you want to clear the question?")) {
   document.getElementById("number").value = "";
   document.getElementById("question").value = "";
   document.getElementById("correct").value = "";
   document.getElementById("additional").value = "";
+  }
 }
 </script>
 </head>
@@ -94,11 +97,11 @@ element.replaceChild(red, element.childNodes[0]);
 
 <hr />
 <h2>Create Your Own Question:</h2>
-<p>Enter the question number and the correct answer below as well as an additional correct answer, if needed. For example, this can account for spelling variations (color and colour) or numbers as words and digits (ten and 10). Your text will be changed to lowercase so the answers will be case insensitive. You only need to enter the question number if you are inserting more than one short answer question per page.</p>
-<fieldset>
-<p><label>Enter the question number: <input id="number" type="text" size="5" /> (Leave blank if you only need one short answer question per page)</label></p>
-<p><label>Enter the question: <input id="question" type="text" size="50" /></label></p>
-<p><label>Enter the correct answer: <input id="correct" type="text" size="40" /></label></p>
+<p>Enter the question number and the correct answer below as well as an additional correct answer, if needed. For example, this can account for spelling variations (color and colour) or numbers as words and digits (ten and 10). Your text will be changed to lowercase so the answers will be case insensitive. You only need to enter the question number if you are inserting more than one short answer question per page. Required fields are marked with an asterisk (*).</p>
+<fieldset><legend>Short Answer Question</legend>
+<p><label>Enter the question number. <input id="number" type="text" size="5" /> (Leave blank if you only need one short answer question per page)</label></p>
+<p><label>Enter the short answer question. * <input id="question" type="text" size="50" required/></label></p>
+<p><label>Enter the correct answer. * <input id="correct" type="text" size="40" required/></label></p>
 <p><label>Enter an additional correct answer: <input id="additional" type="text" size="40" /> (not required)</label></p>
 </fieldset>
 <p><button class="btn btn-success" onclick="createCode()">Create Code</button> <button id="clearQ" class="btn btn-danger" onclick="clearQuestion()">Clear Question</button></p>
