@@ -46,13 +46,13 @@ button.btn-danger {
  </fieldset>
  <hr />
  <h2>Create Your Own Question:</h2>
- <p>Instruct students to choose a button in the left column and then choose the matching button in the right column. Both numbers and colors will appear with the text you input to indicate the matches. Each color used is distinguishable from the others for eight types of color blindness.</p>
-<fieldset>
- <p><label>Enter your directions for the matching exercise: <input id="matching" type="text" size="50" /></label></p>
+ <p>Instruct students to choose a button under Choices and then choose the matching button under Matches. Both numbers and colors will appear with the text you input to indicate the matches. Required fields are marked with an asterisk (*).</p>
+<fieldset><legend>Matching Question</legend>
+ <p><label>Enter your directions for the matching exercise. * <input id="matching" type="text" size="50" required/></label></p>
  <p>Entries in the left column will stay in the order entered; matches in the right column will be shuffled. (You do not have to use all six.)</p>
- <label>Choice 1. <input id="choice1" name="choice" type="text" size="40" /></label> = <label>Match 1. <input id="match1" name="match" type="text" size="40" /></label> <br /><br />
+ <label>Choice 1. * <input id="choice1" name="choice" type="text" size="40" required/></label> = <label>Match 1. * <input id="match1" name="match" type="text" size="40" required/></label> <br /><br />
  
- <label>Choice 2. <input id="choice2" name="choice" type="text" size="40" /></label> = <label>Match 2. <input id="match2" name="match" type="text" size="40" /></label> <br /><br />
+ <label>Choice 2. * <input id="choice2" name="choice" type="text" size="40" required/></label> = <label>Match 2. * <input id="match2" name="match" type="text" size="40" required/></label> <br /><br />
  
  <label>Choice 3. <input id="choice3" name="choice" type="text" size="40" /></label> = <label>Match 3. <input id="match3" name="match" type="text" size="40" /></label> <br /><br />
  
@@ -142,18 +142,21 @@ window.getSelection().removeAllRanges();
 
 function clearCodeMA(id)
 {
-   document.getElementById(id).innerHTML = "";
+  if (confirm("Are you sure you want to clear the code?")) 
+  document.getElementById(id).innerHTML = "";
 }
 
 function clearQuestionMA()
 {
+  if (confirm("Are you sure you want to clear the question?")) {
   document.getElementById("matching").value = "";
    for (var i = 0; i < document.getElementsByName("choice").length; i++) {
     document.getElementsByName("choice")[i].value = "";
     document.getElementsByName("match")[i].value = "";
    }
-
+  }
 }
+
 /* Tooltips */
 $(document).ready(function() {
   $('#copied').tooltip({ title: "Code Copied!", trigger: "click", placement: "bottom" });
