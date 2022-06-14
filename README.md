@@ -10,3 +10,5 @@ Flip Cards are keyboard accessible virtual flashcards that can be flipped on hov
 3. [Matching](matching.html)
 4. [Ordering](ordering.html)
 5. [Flip Cards](flipcards.html)
+
+For the full zip file of updated content templates that can be uploaded to D2L, visit the [d2l-content-templates repository](https://github.com/jenniferwagner18/d2l-content-templates).
