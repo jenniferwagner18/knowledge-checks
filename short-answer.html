@@ -31,7 +31,7 @@ document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>&lt;fi
  if (additionalAnswer !== "")
    { document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>|| guess == "' + additionalAnswer + '"</pre>'); }
 
-document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>) { const green = document.createElement("strong"); green.style.color = "green";  green.innerHTML = "Attempt " + SAclicks' + qno + ' + ": Correct!"; element = document.getElementById("result' + qno + '").children[0]; element.replaceChild(green, element.childNodes[0]); } else { const red = document.createElement("strong"); red.style.color = "#dc143c"; red.innerHTML = "Attempt " + SAclicks' + qno + ' + ": Incorrect! Try again!"; element = document.getElementById("result' + qno + '").children[0]; element.replaceChild(red, element.childNodes[0]); } } &lt;/script&gt; &lt;/fieldset&gt;</pre>');
+document.getElementById("generate").insertAdjacentHTML('beforeend', '<pre>) {var green = document.createElement("strong"); green.style.color = "green";  green.innerHTML = "Attempt " + SAclicks' + qno + ' + ": Correct!"; var element = document.getElementById("result' + qno + '").children[0]; element.replaceChild(green, element.childNodes[0]); } else { var red = document.createElement("strong"); red.style.color = "#dc143c"; red.innerHTML = "Attempt " + SAclicks' + qno + ' + ": Incorrect! Try again!"; var element = document.getElementById("result' + qno + '").children[0]; element.replaceChild(red, element.childNodes[0]); } } &lt;/script&gt; &lt;/fieldset&gt;</pre>');
 } // end of check for empty box
 } // end of createCode function
 
@@ -81,7 +81,7 @@ if (guess == "dog" || guess == "DOG")
   const green = document.createElement("strong");
   green.style.color = "green";
   green.innerHTML = "Attempt " + SAclicks + ": Correct!";
-  element = document.getElementById("result").children[0];
+  var element = document.getElementById("result").children[0];
   element.replaceChild(green, element.childNodes[0]);
 }
 else 
@@ -89,7 +89,7 @@ else
 const red = document.createElement("strong");
 red.style.color = "#dc143c";
 red.innerHTML = "Attempt " + SAclicks + ": Incorrect! Try again!";
-element = document.getElementById("result").children[0];
+var element = document.getElementById("result").children[0];
 element.replaceChild(red, element.childNodes[0]);
 }
 }
